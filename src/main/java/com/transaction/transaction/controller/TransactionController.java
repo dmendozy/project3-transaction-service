@@ -81,18 +81,5 @@ public class TransactionController {
                             .map(Transaction::getCommission);
                 });
     }
-
-
-    //
-    @GetMapping("commissions/{accountId}/")
-    public Flux<Transaction> plusTransactionsByDateRange(@PathVariable("accountId") String accountId){
-        return transactionService.getAll()
-                .filter(transaction -> transaction.getAccountId().compareTo(accountId)==0)
-                .flatMap(transaction -> {
-                    return transactionService.getById(transaction.getTransactionId())
-                            .map(A -> {
-                                return new Transaction(A.getCommission());
-                            });
-                    });
-                }
+    
 }

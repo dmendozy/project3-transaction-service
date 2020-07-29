@@ -81,5 +81,5 @@ public class TransactionController {
                             .map(Transaction::getCommission);
                 });
     }
-    
+
 }

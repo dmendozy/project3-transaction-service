@@ -17,8 +17,7 @@ public class Transaction {
     @Id
     public String transactionId;
     public String transactionName;
-    public double output;
-    public double input;
+    public double amount;
     public double commission;
     public LocalDate datetime;
     public String accountId;
@@ -29,5 +28,9 @@ public class Transaction {
     }
     public Transaction(double commission){
         this.commission=commission;
+    }
+    public Transaction(String transactionName,double amount){
+        this.transactionName=transactionName;
+        this.amount=amount;
     }
 }

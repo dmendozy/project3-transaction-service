@@ -65,7 +65,7 @@ public class TransactionController {
     }
 
     @GetMapping("commissions/{d1}/{d2}")
-    public Flux plusCommissionsbyRangeDate(@PathVariable("d1") String datetime1,
+    public Flux plusCommissionsByRangeDate(@PathVariable("d1") String datetime1,
                                                          @PathVariable("d2") String datetime2){
         LocalDate startDate = LocalDate.parse(datetime1);
         LocalDate finishDate = LocalDate.parse(datetime2);

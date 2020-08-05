@@ -23,14 +23,16 @@ public class Transaction {
     public String accountId;
     public String creditId;
 
-    public Transaction(){
+    public Transaction() {
         super();
     }
-    public Transaction(double commission){
-        this.commission=commission;
+
+    public Transaction(double commission) {
+        this.commission = commission;
     }
-    public Transaction(String transactionName,double amount){
-        this.transactionName=transactionName;
-        this.amount=amount;
+
+    public Transaction(String transactionName, double amount) {
+        this.transactionName = transactionName;
+        this.amount = amount;
     }
 }

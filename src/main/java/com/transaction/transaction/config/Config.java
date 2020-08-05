@@ -19,6 +19,7 @@ public class Config {
                 .version("1")
                 .build();
     }
+
     @Bean
     public Docket docket() {
         return new Docket(DocumentationType.SWAGGER_2)

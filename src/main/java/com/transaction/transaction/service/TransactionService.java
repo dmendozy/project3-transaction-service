@@ -18,19 +18,23 @@ public class TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    public Flux<Transaction> getAll(){
+    public Flux<Transaction> getAll() {
         return transactionRepository.findAll();
     }
-    public Mono<Transaction> getById(String id){
+
+    public Mono<Transaction> getById(String id) {
         return transactionRepository.findById(id);
     }
-    public Mono update(String id, Transaction transaction){
+
+    public Mono update(String id, Transaction transaction) {
         return transactionRepository.save(transaction);
     }
-    public Mono save(Transaction transaction){
+
+    public Mono save(Transaction transaction) {
         return transactionRepository.save(transaction);
     }
-    public Mono delete(String id){
+
+    public Mono delete(String id) {
         return transactionRepository.deleteById(id);
     }
 

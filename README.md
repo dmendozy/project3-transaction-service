@@ -25,7 +25,7 @@ docker run -p 8084:8084 --name transaction-service transaction-service
 ```
 # CRUD
 
-| HTTP Verb  |     `/transaction`  |      `/transaction/{transactionId}`      |   
+| HTTP Verb  |     `/transactions`  |      `/transactions/{transactionId}`      |   
 | ---------- | :---------------: | :---------------: |
 | **POST**| ADD new transaction | - |  
 | **GET**| GET all transactions | GET transaction by Id |
@@ -34,9 +34,9 @@ docker run -p 8084:8084 --name transaction-service transaction-service
 
 
 # Operations
-| HTTP Verb  |     `/customers/profile/{customerId}`  |
-| ---------- | :---------------: |
-| **GET**| GET a detailed customer profile |
+| HTTP Verb  |     `/transactions/account/{accountId}`  |     `/transactions/date/{date}`  |     `/transactions/date/{initDate}/{finishDate}`  |     `/transactions/account/{accountId}`  |
+| ---------- | :---------------: |:---------------: |:---------------: |:---------------: |
+| **GET**| GET transactions by account |GET transactions by date |GET transactions by date range |GET commissions in date range |
 
 
 # Architecture

@@ -9,6 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/transactions")
@@ -43,22 +44,28 @@ public class TransactionController {
         return transactionService.delete(transactionId);
     }
 
+    //find transactions by account
+    @GetMapping("/account/{accountId}")
+    public Flux<Transaction> findTransactionsByAccount(@PathVariable("accountId") String accountId){
+        return transactionService.getByAccountId(accountId);
+    }
+
     //find transactions by date
     @GetMapping("date/{d1}")
     public Flux<Transaction> findTransactionsByDate(@PathVariable("d1") String datetime1){
-        LocalDate dateTime = LocalDate.parse(datetime1);
-        return transactionService.getAll().filter(transaction -> transaction.getDatetime().compareTo(dateTime)==0);
+        LocalDateTime dateTime = LocalDateTime.parse(datetime1+"T00:00:00.000");
+        return transactionService.getAll().filter(transaction -> transaction.getDateTime().compareTo(dateTime)==0);
     }
 
     //find transactions by dates range
     @GetMapping("date/{d1}/{d2}")
     public Flux<Transaction> findTransactionsByDateRange(@PathVariable("d1") String datetime1,
                                                     @PathVariable("d2") String datetime2){
-        LocalDate startDate = LocalDate.parse(datetime1);
-        LocalDate finishDate = LocalDate.parse(datetime2);
+        LocalDateTime startDate = LocalDateTime.parse(datetime1+"T00:00:00.000");
+        LocalDateTime finishDate = LocalDateTime.parse(datetime2+"T00:00:00.000");
         return transactionService.getAll()
-                .filter(transaction -> transaction.getDatetime().compareTo(startDate)>=0&&
-                        transaction.getDatetime().compareTo(finishDate)<=0)
+                .filter(transaction -> transaction.getDateTime().compareTo(startDate)>=0&&
+                        transaction.getDateTime().compareTo(finishDate)<=0)
                 .flatMap(transaction -> {
                     return transactionService.getById(transaction.getTransactionId());
                 });
@@ -67,11 +74,11 @@ public class TransactionController {
     @GetMapping("commissions/{d1}/{d2}")
     public Flux plusCommissionsByRangeDate(@PathVariable("d1") String datetime1,
                                                          @PathVariable("d2") String datetime2){
-        LocalDate startDate = LocalDate.parse(datetime1);
-        LocalDate finishDate = LocalDate.parse(datetime2);
+        LocalDateTime startDate = LocalDateTime.parse(datetime1+"T00:00:00.000");
+        LocalDateTime finishDate = LocalDateTime.parse(datetime2+"T00:00:00.000");
         return transactionService.getAll()
-                .filter(transaction -> transaction.getDatetime().compareTo(startDate)>=0&&
-                        transaction.getDatetime().compareTo(finishDate)<=0&&
+                .filter(transaction -> transaction.getDateTime().compareTo(startDate)>=0&&
+                        transaction.getDateTime().compareTo(finishDate)<=0&&
                         transaction.getCommission()>0)
                 .flatMap(transaction -> {
                     return transactionService.getAll()

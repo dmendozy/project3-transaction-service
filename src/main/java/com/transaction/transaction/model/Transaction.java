@@ -4,7 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Getter
@@ -19,7 +19,7 @@ public class Transaction {
     public String transactionName;
     public double amount;
     public double commission;
-    public LocalDate datetime;
+    public LocalDateTime dateTime;
     public String accountId;
     public String creditId;
 

@@ -33,4 +33,8 @@ public class TransactionService {
     public Mono delete(String id){
         return transactionRepository.deleteById(id);
     }
+
+    public Flux<Transaction> getByAccountId(String accountId) {
+        return transactionRepository.findByAccountId(accountId);
+    }
 }

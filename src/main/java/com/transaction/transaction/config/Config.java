@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 public class Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Bootcamp Project 2")
+                .title("Bootcamp Project")
                 .description("Config Swagger for service")
                 .version("1")
                 .build();

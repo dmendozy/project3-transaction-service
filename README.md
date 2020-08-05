@@ -1,4 +1,4 @@
-Bootcamp-project2
+Transaction service
 ======================
 # Getting Started
 This project is based on Spring Boot microservices using the reactive stack, read more info there https://spring.io/reactive
@@ -17,36 +17,32 @@ This project is based on Spring Boot microservices using the reactive stack, rea
 # Building
 ## Windows
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop).
-2. Create an image for MongoDB
-```
-docker pull mongo:latest
-```
-3. Create a container for the database
-```
-docker run -d -p 27017:27017 --name bootcamp-mongodb mongo:latest
-```
-4. Check
-```
-docker ps
-```
-5. Clone each repository called project2-* in my profile
-6. Create each image and container using the following code:
+2. Create an image and container for transaction-service using the following code:
 ```
 mvn install
-docker build -f Dockerfile -t transaction-service
+docker build . -t transaction-service
 docker run -p 8084:8084 --name transaction-service transaction-service
 ```
-7. After create all images and container, use docker compose to start all services from project2-config
-```
-docker-compose up
-```
+# CRUD
+
+| HTTP Verb  |     `/transaction`  |      `/transaction/{transactionId}`      |   
+| ---------- | :---------------: | :---------------: |
+| **POST**| ADD new transaction | - |  
+| **GET**| GET all transactions | GET transaction by Id |
+| **PUT**| - | EDIT transaction by Id|  
+| **DELETE**| - |DELETE transaction by Id|  
+
+
+# Operations
+| HTTP Verb  |     `/customers/profile/{customerId}`  |
+| ---------- | :---------------: |
+| **GET**| GET a detailed customer profile |
+
 
 # Architecture
 
-![Architecture](https://raw.githubusercontent.com/dmendozy/project2-config/master/files/architecture.png)
+![Architecture](https://raw.githubusercontent.com/dmendozy/config-service/master/files/arch.png)
 
 # Authors
 
 * **Danny Mendoza Yenque** - *Everis Bootcamp Microservices July 2020* - [DannyMendoza](https://github.com/dmendozy)
-
-
